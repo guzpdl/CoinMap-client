@@ -6,7 +6,6 @@ import Nav from 'react-bootstrap/Nav';
 
 const LogInModal = () => {
 
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 

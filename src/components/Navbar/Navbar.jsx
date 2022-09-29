@@ -3,7 +3,7 @@ import LogInModal from "../LogIn/LogIn";
 import RegistryModal from "../SignUp/SignUp";
 
 const NavbarCoinMap = () => {
-
+   
     return(
 
       <Navbar bg="dark" variant="dark">
@@ -13,7 +13,7 @@ const NavbarCoinMap = () => {
           </Navbar.Brand>
           <Nav className="me-auto">
 
-          <Nav.Link className="pt-3" variant="primary" href="/home">Home</Nav.Link>    
+          <Nav.Link className="pt-3" variant="primary" href="/">Home</Nav.Link>    
 
           <Nav.Link as='span'>
             <RegistryModal/>
@@ -25,14 +25,15 @@ const NavbarCoinMap = () => {
 
 
           </Nav>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
+              type="text"
+              placeholder="Search a coin"
+              className="me-2 bg-dark text-light border-1 text-center mt-4"
+              // onChange={el => el.target.value}
               aria-label="Search"
             />
-          </Form>
+          </Form> */}
         </Container>
       </Navbar>
     )

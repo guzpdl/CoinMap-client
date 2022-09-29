@@ -3,34 +3,29 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom';
+import authAxios from '../../services/authAxios.service'
+// import { Link } from 'react-router-dom';
 
 
 const RegistryModal = () => {
-
-
-const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-
-
-
-
-  const [show, setShow] = useState(false);
   const [newUser, setNewUser] = useState({});
 
-//   const createNewUser = (eventHTML) => {
-//     eventHTML.preventDefault();
-//     authAxios.registro(newUser).then((response) => {
-//       console.log(response);
-//     });
-//   };
+  // ------ MODAL BOOTSTRAP ----- 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
 
+  const createNewUser = (eventHTML) => {
+    eventHTML.preventDefault();
+    authAxios.registro(newUser).then((response) => {
+      console.log(response);
+    });
+  };
 
-// const updateNewUser = (eventHTML) => {
-//     const { name, value } = eventHTML.target;
-//     setNewUser({ ...newUser, [name]: value });
-//   };
+  const updateNewUser = (eventHTML) => {
+    const { name, value } = eventHTML.target;
+    setNewUser({ ...newUser, [name]: value });
+  };
 
   return(
 
@@ -44,10 +39,12 @@ const handleClose = () => setShow(false);
           <Modal.Title>Sign up to CoinMap</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={createNewUser}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                name='email'
+                onChange={updateNewUser}
                 type="email"
                 placeholder="name@example.com"
                 autoFocus
@@ -57,6 +54,8 @@ const handleClose = () => setShow(false);
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="username"
+                name='username'
+                onChange={updateNewUser}
                 autoFocus
               />
             </Form.Group>
@@ -64,6 +63,8 @@ const handleClose = () => setShow(false);
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
+                name='password'
+                onChange={updateNewUser}
                 autoFocus
               />
             </Form.Group>

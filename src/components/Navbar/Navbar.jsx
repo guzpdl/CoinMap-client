@@ -1,8 +1,13 @@
 import { Container, Navbar, Nav, Form, Button } from "react-bootstrap"
+import { useContext } from 'react';
+
+import { AuthContext } from "../../context/auth.context";
 import LogInModal from "../LogIn/LogIn";
 import RegistryModal from "../SignUp/SignUp";
 
 const NavbarCoinMap = () => {
+
+  const { user, isLoading, isLoggedIn, logOut } = useContext(AuthContext);
 
     return(
 

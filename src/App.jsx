@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import AppRoutes from './routes/AppRoutes';
 import NavbarCoinMap from './components/Navbar/Navbar';
+import  "@fontsource/montserrat" ;
 
 //  -------------- TEST ---------------
 // import { AuthContext } from './context/auth.context';

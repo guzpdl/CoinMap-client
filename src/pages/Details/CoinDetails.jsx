@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react';
 import DetailsAxios from '../../services/details';
 import { useParams } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
-import DinamicDetails from '../../components/CoinDetails/DinamicDetails/DinamicDetails';
-import StaticDetails from '../../components/CoinDetails/StaticDetails/StaticDetails';
+import Details from '../../components/CoinDetails/Details/Details';
 
 
 const CoinDetails = () => {
@@ -46,7 +45,7 @@ const CoinDetails = () => {
     <div>
         <Container>
             <Row>
-              <DinamicDetails details={details} detailsMD={detailsMD}/>   
+              <Details details={details} detailsMD={detailsMD}/>   
             </Row>
         </Container>
     </div>

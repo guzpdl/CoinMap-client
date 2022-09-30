@@ -1,8 +1,8 @@
 import addDots from '../../../utils/addDots.util'
-import React, { useEffect, useState } from 'react'
-import './DinamicDetails.css'
+// import React, { useEffect, useState } from 'react'
+import './Details.css'
 
-const DinamicDetails = ({details, detailsMD}) => {
+const Details = ({details, detailsMD}) => {
 
 //    details?.marketCapUsd && console.log('MSRKET TSNK', addDots(details?.marketCapUsd))
   return (
@@ -21,7 +21,7 @@ const DinamicDetails = ({details, detailsMD}) => {
         <h1>{details?.max_supply &&  addDots(details.max_supply)}</h1>
         <h1>{details?.circulating_supply &&  addDots(details.circulating_supply)}</h1>
         <h1>{details?.currentPriceUsd &&  addDots(details.currentPriceUsd)}</h1>
-        <img src={details?.thumb && details.thumb}/>
+        <img src={details?.thumb && details.thumb} alt=""/>
          <h1>{detailsMD.name}</h1>
         <h1 className="text-uppercase">{detailsMD.symbol}</h1>
         <h1>{detailsMD.coment}</h1>
@@ -30,6 +30,6 @@ const DinamicDetails = ({details, detailsMD}) => {
   )
 }
 
-export default DinamicDetails
+export default Details
 
         

@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/auth.context";
 import {LinkContainer} from 'react-router-bootstrap'
 import LogInModal from "../LogIn/LogIn";
 import RegistryModal from "../SignUp/SignUp";
+// import SelectCurrency from "./SelectCurrency/SelectCurrency";
 
 const NavbarCoinMap = () => {
   const { user, isLoggedIn, logOut } = useContext(AuthContext);
@@ -43,15 +44,7 @@ const NavbarCoinMap = () => {
             </Nav.Link>
           )}
         </Nav>
-        {/* <Form className="d-flex">
-            <Form.Control
-              type="text"
-              placeholder="Search a coin"
-              className="me-2 bg-dark text-light border-1 text-center mt-4"
-              // onChange={el => el.target.value}
-              aria-label="Search"
-            />
-          </Form> */}
+        {/* <SelectCurrency/> */}
       </Container>
     </Navbar>
   );

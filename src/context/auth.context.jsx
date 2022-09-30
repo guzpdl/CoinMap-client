@@ -1,12 +1,12 @@
-import { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import userAxios from '../services/userAxios.service';
+import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import userAxios from "../services/userAxios.service";
 
-  const AuthContext = createContext();
+const AuthContext = createContext();
 
-const LOCALSTORAGE_TOKEN = 'tokenAuth';
+const LOCALSTORAGE_TOKEN = "tokenAuth";
 
-  const AuthProvider = (props) => {
+const AuthProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -31,7 +31,7 @@ const LOCALSTORAGE_TOKEN = 'tokenAuth';
           setUser(user);
           setIsLoading(false);
           setIsLoggedIn(true);
-          navigate('/');
+          navigate("/");
         })
         .catch((err) => {
           console.log(err);
@@ -49,7 +49,7 @@ const LOCALSTORAGE_TOKEN = 'tokenAuth';
   const logOut = () => {
     destroyToken();
     authentication();
-  }
+  };
 
   useEffect(() => {
     authentication();
@@ -57,13 +57,18 @@ const LOCALSTORAGE_TOKEN = 'tokenAuth';
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, isLoading, user, storeToken, authentication, logOut }}>
+      value={{
+        isLoggedIn,
+        isLoading,
+        user,
+        storeToken,
+        authentication,
+        logOut,
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
 };
 
-export {
-  AuthContext,
-  AuthProvider
-}
+export { AuthContext, AuthProvider };

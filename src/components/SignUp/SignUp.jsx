@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import Nav from 'react-bootstrap/Nav';
-import authAxios from '../../services/authAxios.service'
-// import { Link } from 'react-router-dom';
-
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import Nav from "react-bootstrap/Nav";
+import authAxios from "../../services/authAxios.service";
 
 const RegistryModal = () => {
   const [newUser, setNewUser] = useState({});
 
-  // ------ MODAL BOOTSTRAP ----- 
+  // ------ MODAL BOOTSTRAP -----
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [show, setShow] = useState(false);
 
   const createNewUser = (eventHTML) => {
     eventHTML.preventDefault();
-    authAxios.registro(newUser).then((response) => {
+    authAxios.registry(newUser).then((response) => {
       console.log(response);
     });
   };
@@ -27,8 +25,7 @@ const RegistryModal = () => {
     setNewUser({ ...newUser, [name]: value });
   };
 
-  return(
-
+  return (
     <>
       <Nav.Link variant="primary" onClick={handleShow}>
         Sign up
@@ -43,7 +40,7 @@ const RegistryModal = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
               <Form.Control
-                name='email'
+                name="email"
                 onChange={updateNewUser}
                 type="email"
                 placeholder="name@example.com"
@@ -54,7 +51,7 @@ const RegistryModal = () => {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="username"
-                name='username'
+                name="username"
                 onChange={updateNewUser}
                 autoFocus
               />
@@ -63,25 +60,24 @@ const RegistryModal = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                name='password'
+                name="password"
                 onChange={updateNewUser}
                 autoFocus
               />
             </Form.Group>
+            <Button variant="primary" type="submit" onClick={handleClose}>
+              Register
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Register
-          </Button>
         </Modal.Footer>
       </Modal>
     </>
+  );
+};
 
-  )
-}
-
-export default RegistryModal
+export default RegistryModal;

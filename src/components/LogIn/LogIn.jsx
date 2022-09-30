@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {  useContext } from 'react';
-import { AuthContext } from '../context/auth.context';
+import { AuthContext } from '../../context/auth.context';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
@@ -15,6 +15,7 @@ const LogInModal = () => {
   const login = (eventHTML) => {
     eventHTML.preventDefault();
     authAxios.login(user).then((response) => {
+      console.log(response);  
       storeToken(response.token);
       authentication();
     })
@@ -23,10 +24,7 @@ const LogInModal = () => {
   const updateUser = (eventHTML) => {
     const { value, name } = eventHTML.target;
     setUser({ ...user, [name]: value });
-  };
-
-
-  
+  };  
   
   // --------------- MODAL BOOTSTRAP -------------
     const handleClose = () => setShow(false);
@@ -65,19 +63,18 @@ const LogInModal = () => {
             autoFocus
           />
         </Form.Group>
+      <Button variant="primary" type='submit' onClick={handleClose}>
+        Log in
+      </Button>
       </Form>
     </Modal.Body>
     <Modal.Footer>
       <Button variant="secondary" onClick={handleClose}>
         Close
       </Button>
-      <Button variant="primary" onClick={handleClose}>
-        Log in
-      </Button>
     </Modal.Footer>
   </Modal>
 </>
-
 )
 }
 

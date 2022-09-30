@@ -1,36 +1,49 @@
-import { Container, Navbar, Nav, Form, Button } from "react-bootstrap"
-import { useContext } from 'react';
-
+import { Container, Navbar, Nav } from "react-bootstrap";
+import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
+import {LinkContainer} from 'react-router-bootstrap'
 import LogInModal from "../LogIn/LogIn";
 import RegistryModal from "../SignUp/SignUp";
 
 const NavbarCoinMap = () => {
+  const { user, isLoggedIn, logOut } = useContext(AuthContext);
 
-  const { user, isLoading, isLoggedIn, logOut } = useContext(AuthContext);
+  return (
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand>CoinMap</Navbar.Brand>
+        <Nav className="me-auto">
 
-    return(
-
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand>
-          CoinMap         
-          </Navbar.Brand>
-          <Nav className="me-auto">
-
-          <Nav.Link className="pt-3" variant="primary" href="/">Home</Nav.Link>    
-
-          <Nav.Link as='span'>
-            <RegistryModal/>
+          <LinkContainer to='/'>
+          <Nav.Link className="pt-3" variant="primary" >
+            Home
           </Nav.Link>
+          </LinkContainer>
 
-          <Nav.Link as='span'>
-          <LogInModal/>
+          <Nav.Link as="span">
+            {!isLoggedIn ? <RegistryModal /> : null}
           </Nav.Link>
+          <Nav.Link as="span">{!isLoggedIn ? <LogInModal /> : null}</Nav.Link>
 
+          {isLoggedIn && (
+            <LinkContainer to='/profile/:id'>
+            <Nav.Link as="span" className="pointer pt-3">
+              {user.username}
+            </Nav.Link>
+            </LinkContainer>
+          )}
 
-          </Nav>
-          {/* <Form className="d-flex">
+          {isLoggedIn && (
+            <Nav.Link
+              as="span"
+              className="pointer pt-3"
+              onClick={() => logOut()}
+            >
+              Log out
+            </Nav.Link>
+          )}
+        </Nav>
+        {/* <Form className="d-flex">
             <Form.Control
               type="text"
               placeholder="Search a coin"
@@ -39,10 +52,9 @@ const NavbarCoinMap = () => {
               aria-label="Search"
             />
           </Form> */}
-        </Container>
-      </Navbar>
-    )
+      </Container>
+    </Navbar>
+  );
+};
 
-}
-
-export default NavbarCoinMap
+export default NavbarCoinMap;

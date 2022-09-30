@@ -5,7 +5,7 @@ class CoinsAxios extends InitAxios {
         super('/coins')
     }
 
-    getCoinList(body){
+    async getCoinList(body){
         return this.axios.get(`/home`, body).then((response) => response.data)
     }
 }

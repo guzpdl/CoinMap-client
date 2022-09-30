@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import React from 'react'
 import CoinsAxios from '../../services/coins';
 import TableCoins from "../../components/Market/CoinTable"
-import { Table, Form } from "react-bootstrap";
-
+import { Row, Container } from "react-bootstrap";
+import SearchBar from '../../components/searchBar/searchBar';
 
 const HomePage = () => {
 
@@ -10,6 +11,7 @@ const HomePage = () => {
     const [coinList, setCoinList] = useState([])
     const [search, setSearch] = useState('')
 
+    
     const getAll = () => {
         coinsAxios
             .getCoinList()
@@ -23,22 +25,15 @@ const HomePage = () => {
         getAll()
     }, [])
 
+    
     return(
         <>
-            <div className="container">
-                <div className="row">
-                    <Form className="d-flex">
-                        <Form.Control
-                            type="text"
-                            placeholder="Search a coin"
-                            className="me-2 bg-dark text-light border-1 text-center mt-4"
-                            onChange={el => setSearch(el.target.value)}
-                            aria-label="Search"
-                        />
-                    </Form>
+            <Container>
+                <Row>
+                    <SearchBar setSearch={setSearch}/>
                     <TableCoins coinList={coinList} search={search}/>
-                </div>
-            </div>
+                </Row>
+            </Container>
 
         </>
 

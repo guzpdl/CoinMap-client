@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {  useContext } from 'react';
-import { AuthContext } from '../context/auth.context';
+import { AuthContext } from '../../context/auth.context'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';

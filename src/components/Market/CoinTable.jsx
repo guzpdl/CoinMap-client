@@ -1,6 +1,6 @@
 import React from "react";
-import { Table, Form } from "react-bootstrap";
-import CoinRow from "./CoinRow";
+import { Table } from "react-bootstrap";
+import CoinRow from "./CoinRow/CoinRow";
 
 const title = ['#', 'Coin', 'Price', '1h', '24H', '7D', 'Total_Volume','Market Cap']
 const TableCoins = ({coinList, search}) => {

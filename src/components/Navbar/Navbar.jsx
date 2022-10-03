@@ -26,7 +26,7 @@ const NavbarCoinMap = () => {
           <Nav.Link as="span">{!isLoggedIn ? <LogInModal /> : null}</Nav.Link>
 
           {isLoggedIn && (
-            <LinkContainer to='/profile/:id'>
+            <LinkContainer to={`/profile/${user._id}`}>
             <Nav.Link as="span" className="pointer pt-3">
               {user.username}
             </Nav.Link>

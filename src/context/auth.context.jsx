@@ -31,7 +31,7 @@ const AuthProvider = (props) => {
           setUser(user);
           setIsLoading(false);
           setIsLoggedIn(true);
-          navigate("/");
+          // navigate("/");
         })
         .catch((err) => {
           console.log(err);

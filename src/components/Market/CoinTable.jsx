@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import CoinRow from "./CoinRow/CoinRow";
 
-const title = ['#', 'Coin', 'Price', '1h', '24H', '7D', 'Total_Volume','Market Cap']
+const title = ['Fav', '#', 'Coin', 'Price', '1h', '24H', '7D', 'Total_Volume','Market Cap']
 const TableCoins = ({coinList, search}) => {
        const filtered = coinList.filter((coin) => coin.name.toLowerCase().includes(search.toLowerCase())| 
       coin.symbol.toLowerCase().includes(search.toLowerCase())) 

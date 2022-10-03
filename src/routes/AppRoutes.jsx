@@ -12,7 +12,7 @@ const AppRoutes = () => {
   return (
         <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='profile/:id' element={<ProfilePage/>}/>
+            <Route path='/profile/:id' element={<ProfilePage/>}/>
             <Route path='/coins/:id' element={<CoinDetails />} />
             <Route path='*' element={<ErrorPage />} />
         </Routes>

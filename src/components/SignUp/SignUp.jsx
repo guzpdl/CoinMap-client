@@ -32,7 +32,7 @@ const RegistryModal = () => {
       </Nav.Link>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header  closeButton>
           <Modal.Title>Sign up to CoinMap</Modal.Title>
         </Modal.Header>
         <Modal.Body>

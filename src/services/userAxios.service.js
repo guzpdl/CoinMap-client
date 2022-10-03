@@ -15,9 +15,21 @@ class UserAxios extends InitAxios {
       .then((response) => response.data);
   }
 
+  getOneUserById(id){
+    return this.axios.get(`/profile/${id}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('tokenAuth')}`,
+        },
+      }).then((response) => response.data)
+  }
+
   editProfile(id, body) {
     return this.axios
-      .put(`/profile/${id}`, body)
+      .put(`/profile/${id}`, body, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('tokenAuth')}`,
+        }
+      })
       .then((response) => response.data);
   }
 

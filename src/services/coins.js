@@ -8,6 +8,9 @@ class CoinsAxios extends InitAxios {
     async getCoinList(body){
         return this.axios.get(`/home`, body).then((response) => response.data)
     }
+    async trend(body){
+        return this.axios.get(`/trending`, body).then((response) => response.data)
+    }
 }
 
 export default CoinsAxios

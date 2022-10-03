@@ -6,11 +6,12 @@ import { Container, Row } from 'react-bootstrap';
 import Details from '../../components/CoinDetails/Details/Details';
 
 
+
 const CoinDetails = () => {
 
     
     const detailsAxios = new DetailsAxios()
-    const [details, setDetails] = useState([])
+    const [details, setDetails] = useState(null)
     const [detailsMD, setDetailsMD] = useState({})
 
     const { id } = useParams()

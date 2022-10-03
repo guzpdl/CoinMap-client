@@ -1,5 +1,5 @@
 .tableColor{
-    color: #ffffff99
+    color: #ffffff99;
 }
 .pointer {
     cursor: pointer;
@@ -17,4 +17,5 @@
     color: #eeeeee;
     font-size: 20px;
     font-weight: bolder;
+    text-decoration: none;
 }

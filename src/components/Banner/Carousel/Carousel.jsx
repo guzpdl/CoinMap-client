@@ -54,9 +54,5 @@ const Carousel = ({trending}) => {
 }
 
 export default Carousel
-
-
-
-    //     
        
        

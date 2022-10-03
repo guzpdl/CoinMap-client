@@ -13,7 +13,7 @@ const CryptoContext = ({Children} ) => {
         <Crypto.Provider value={{currency, symbol, setCurrency}}>
            {Children} 
         </Crypto.Provider>
-  )
+  ) 
 }
 
 export default CryptoContext

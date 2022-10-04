@@ -1,36 +1,53 @@
-import { useContext } from "react"
 import { Container, Row, Card } from "react-bootstrap"
-import { AuthContext } from "../../context/auth.context"
-import getFavCoins from '../../services/userAxios.service'
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 
 
-const FavoriteCoins = ({details, userData, user}) => {
+const FavoriteCoins = ({ userData}) => {
 
-  console.log(userData.favorite_coins, details)  
+  console.log(userData.favorite_coins)  
 
 
-    return(
 
-        <Container>
+  const favData = userData.favorite_coins
+
+  console.log(favData);
+
+
+  
+  return(
+    
+    favData.map((e, index) =>    {
+      return(
+        <div key={index} className="">
+    <Container>
         <Row>
-            <h2>Your favorite coins!</h2>
-            
-            <Card style={{ width: '18rem' }}>
-            <Card.Body>
-            <Card.Title>{details.name}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+        <Card className="my-5 col-2 d-flex" style={{ width: '18rem' }}>
+          <Card.Img variant="top" src={e.thumb} />
+          <Card.Body>
+            <Card.Title>{e.name}</Card.Title>
             <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
-    </Card>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </Card.Text>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroup.Item>{e.max_supply}</ListGroup.Item>
+            <ListGroup.Item></ListGroup.Item>
+            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          </ListGroup>
+          <Card.Body>
+            <Card.Link href="#">Card Link</Card.Link>
+            <Card.Link href="#">Another Link</Card.Link>
+          </Card.Body>
+        </Card>
         </Row>
         </Container>
+        </div>
+        )
+      })
 
         
     )

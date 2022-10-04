@@ -29,7 +29,7 @@ const [page, setPage] = useState()
                     )
                 })}
             </tbody>
-        </Table> 
+        </Table>  
         // <Pagination count={(filtered?.length/10).toFixed(0)}/>
         // </>
        

@@ -16,25 +16,36 @@ const ProfilePage = () => {
   const [details, setDetails] = useState([]);
   const [userData, setuserData] = useState([]);
   
-  // const { id } = useParams();
+  const { id } = useParams();
 
-  // const getDetails = (idDetails) => {
-  //   detailsAxios
-  //     .coinData(idDetails)
-  //     .then(({ data }) => {
-  //       // console.log('DENTRO DEL SERVICIO CONDATA', data)
-  //       setDetails(data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const getDetails = (idDetails) => {
+    detailsAxios
+      .coinData(idDetails)
+      .then(({ data }) => {
+        // console.log('DENTRO DEL SERVICIO CONDATA', data)
+        setDetails(data);
+      })
+      .catch((err) => console.log(err));
+  };
 
+  const getFavs =  () => {
+    UserAxios.getFavCoins(id)
+    .then((data) => {
+      setuserData(data)
+      const { favorite_coins } = data;
+      Promise.all(
+        favorite_coins?.map((e) => {
+          return (getDetails(e.id));
+        })
+        )
+      })
+    .catch((err) => console.log(err))
 
-
-
+  };
 
 
   useEffect(() => {
-    // getFavs();
+    getFavs();
   }, []);
 
   if (isLoading) {

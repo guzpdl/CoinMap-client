@@ -15,7 +15,7 @@ const CoinDetails = () => {
     const [detailsMD, setDetailsMD] = useState({})
 
     const { id } = useParams()
-    // console.log('PARAMS', id)
+    console.log('PARAMS', id)
 
         const getDetails = (id) => {
             detailsAxios

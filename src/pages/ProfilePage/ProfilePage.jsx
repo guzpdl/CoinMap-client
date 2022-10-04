@@ -30,26 +30,12 @@ const ProfilePage = () => {
 
 
 
-  // const getFavs =  () => {
-  //   UserAxios.getFavCoins(id)
-  //   .then((data) => {
-  //     setuserData(data)
-  //     const { favorite_coins } = data;
-  //     Promise.all(
-  //       favorite_coins?.map((e) => {
-  //         return (getDetails(e.id));
-  //       })
-  //       )
-  //     });
-  //   .catch((err) => console.log(err))
-    
-  // };
 
-  // console.log('PARAMS', id)
 
-  // useEffect(() => {
-  //   getFavs();
-  // }, []);
+
+  useEffect(() => {
+    // getFavs();
+  }, []);
 
   if (isLoading) {
     return <p>Loading...</p>;

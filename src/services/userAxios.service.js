@@ -23,6 +23,14 @@ class UserAxios extends InitAxios {
       }).then((response) => response.data)
   }
 
+  getFavCoins(id){
+    return this.axios.get(`/profile/favs/${id}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('tokenAuth')}`,
+      },
+    }).then((response) => response.data)
+  }
+
   editProfile(id, body) {
     return this.axios
       .put(`/profile/${id}`, body, {
@@ -32,6 +40,18 @@ class UserAxios extends InitAxios {
       })
       .then((response) => response.data);
   }
+
+  updateFavCoins(id, body){
+    return this.axios
+    .put(`/profile/favs/${id}`, body , {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('tokenAuth')}`,
+      }
+    })
+    .then((response) => response.data);
+  }
+
+
 
   static getInstance() {
     if (!this.instance) {

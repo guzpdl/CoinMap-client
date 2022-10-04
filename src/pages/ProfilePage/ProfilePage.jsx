@@ -13,17 +13,17 @@ const ProfilePage = () => {
   const { user, isLoading, isLoggedIn } = useContext(AuthContext);
   const detailsAxios = new DetailsAxios();
 
-  const [details, setDetails] = useState([]);
   const [userData, setuserData] = useState([]);
   
   const { id } = useParams();
 
   const getDetails = (idDetails) => {
-    detailsAxios
+    return detailsAxios
       .coinData(idDetails)
       .then(({ data }) => {
         // console.log('DENTRO DEL SERVICIO CONDATA', data)
-        setDetails(data);
+        // setDetails(data);
+        return data;
       })
       .catch((err) => console.log(err));
   };
@@ -31,18 +31,24 @@ const ProfilePage = () => {
   const getFavs =  () => {
     UserAxios.getFavCoins(id)
     .then((data) => {
-      setuserData(data)
+      // setuserData(data)
       const { favorite_coins } = data;
       Promise.all(
         favorite_coins?.map((e) => {
           return (getDetails(e.id));
         })
         )
+        .then((data) => {
+          console.log('Entraaaa!!!')
+          setuserData({...userData, favorite_coins:data})
+          console.log(data)})
+          .catch((err) => {
+            console.log(err);
+            console.log('error')
+          })
       })
     .catch((err) => console.log(err))
-
   };
-
 
   useEffect(() => {
     getFavs();
@@ -60,7 +66,7 @@ const ProfilePage = () => {
         <EditProfileModal user={user} />
         <div className="panel">
           <div className="panel-body bio-graph-info">
-            <FavoriteCoins details={details} User={user}  userData={userData}/>
+            <FavoriteCoins  userData={userData}/>
           </div>
         </div>
       </Row>

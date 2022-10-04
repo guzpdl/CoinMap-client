@@ -18,7 +18,7 @@ const FavoriteCoins = ({ userData}) => {
   
   return(
     
-    favData.map((e, index) =>    {
+    favData?.map((e, index) =>    {
       return(
         <div key={index} className="">
     <Container>

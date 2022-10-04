@@ -1,33 +1,56 @@
+import { Container } from 'react-bootstrap';
 import addDots from '../../../utils/addDots.util'
 import './Details.css'
 
 const Details = ({details, detailsMD}) => {
-console.log(details);
-//    details?.marketCapUsd && console.log('MSRKET TSNK', addDots(details?.marketCapUsd))
-  return (
-    details &&
-    <div> 
-        <h1>{addDots(details.market_cap_rank)}</h1>
-        <h1>{details.sentiment_votes_up_percentage}%</h1>
-        <h1>{details.sentiment_votes_down_percentage}%</h1>
-        <h1>{addDots(details.marketCapUsd)}$</h1>
-        <h1>{addDots(details.volumeUsd)}$</h1>
-        <h1 style={details.price_change_24h > 0 ?{color: "#8dc647" } 
-        : details.price_change_24h === 0?{color: "gray"}
-        :{color: "#e15241"}}>{addDots(details.price_change_24h.toFixed(2))}$</h1>
-        <h1 style={details.price_change_percentage_24h > 0 ?{color: "#8dc647" } 
-        : details.price_change_percentage_24h === 0?{color: "gray"}
-        :{color: "#e15241"}}>{ details.price_change_percentage_24h &&  addDots(details.price_change_percentage_24h)}%</h1>
-        <h1>{addDots(details.max_supply)}</h1>
-        <h1>{addDots(details.circulating_supply)}</h1>
-        <h1>{addDots(details.currentPriceUsd)}</h1>
-        <img src={details.thumb} alt=""/>
-         <h1>{detailsMD.name}</h1>
-        <h1 className="text-uppercase">{detailsMD.symbol}</h1>
-        <h1>{detailsMD.coment}</h1>
-        <h1 className="description" dangerouslySetInnerHTML={{__html: details.en}}></h1>
-        
+
+  console.log({details})
+return ( 
+    <div>
+    {details &&
+    <div>
+      <div className='details'>
+          <img src={details.thumb} alt=""/>
+          <div className='heading'> 
+          <h3>{detailsMD.name} <span className='text-uppercase text-muted'>{detailsMD.symbol}</span></h3>
+          
+            
+         
+
+          <div className='marketData heading'>
+            <h5 className='d-flex'>Rank:&nbsp; &nbsp;{addDots(details.market_cap_rank)}</h5>
+            <h5 className='d-flex'>Current Price:&nbsp; &nbsp;{addDots(details.currentPriceUsd)}</h5>
+            <h5 className='d-flex'>Market Cap:&nbsp; &nbsp;${addDots(details.marketCapUsd)}</h5>
+          </div>
+
+          <div className='marketData heading'>
+            <h5 className='d-flex'>Max Supply:&nbsp; &nbsp;{addDots(details.max_supply)} {detailsMD.symbol.toUpperCase()}</h5>
+            <h5 className='d-flex'>Circulating Supply:&nbsp; &nbsp;{addDots(details.circulating_supply)} {detailsMD.symbol.toUpperCase()}</h5>
+          </div>
+
+          <div className='marketData heading'>
+            <div className='row'>
+            <h5 className='text-center' >24H:&nbsp; &nbsp;</h5>
+            <h5 style={details.price_change_24h > 0 ?{color: "#8dc647" } 
+          : details.price_change_24h === 0?{color: "gray"}
+          :{color: "#e15241"}}>{addDots(details.price_change_24h.toFixed(2))}$</h5>
+            </div>
+            <div className='row'>
+            <h5 className='text-center' >24H:&nbsp; &nbsp;</h5>
+            <h5 style={details.price_change_24h > 0 ?{color: "#8dc647" } 
+          : details.price_change_24h === 0?{color: "gray"}
+          :{color: "#e15241"}}>{ details.price_change_percentage_24h &&  addDots(details.price_change_percentage_24h.toFixed(2))}%</h5>
+            </div>
+            <h5 className='d-flex'>Volumen:&nbsp; &nbsp;${addDots(details.volumeUsd)}</h5>
+          </div> 
+          <p className="description" dangerouslySetInnerHTML={{__html: details.en}}></p>         
+          <h1>{detailsMD.coment}</h1>
+          
+          </div>
+      </div>
+    </div>}
     </div>
+    
   )
 }
 

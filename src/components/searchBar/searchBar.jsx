@@ -1,9 +1,10 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
+import "./searchBar.css"
 
 const SearchBar = ({setSearch}) => {
   return (
-    <div>
+    <div className="searchBar">
         <Form className="d-flex">
                         <Form.Control
                             type="text"

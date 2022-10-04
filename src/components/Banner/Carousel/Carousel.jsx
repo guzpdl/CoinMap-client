@@ -13,7 +13,7 @@ const Carousel = ({trending}) => {
     const items = trending.map((coin, index)=>{
         // console.log(coin?.price_change_percentage_24h)
         return(
-            <Link className='carouselItem' to={`/coins/${coin.id}`}>
+            <Link key={index} className='carouselItem' to={`/coins/${coin.id}`}>
                   <img className="logo "src={coin?.image} alt=''/>
                   <span>{coin?.name}</span>
                   <span>

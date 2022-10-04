@@ -8,7 +8,7 @@ import { AuthProvider } from './context/auth.context';
  
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Router>
     <AuthProvider>
       {/* <CryptoContext> */}
@@ -16,6 +16,6 @@ root.render(
       {/* </CryptoContext> */}
       </AuthProvider>
     </Router>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 

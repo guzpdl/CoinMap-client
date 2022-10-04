@@ -38,11 +38,17 @@ const CoinRow = ({coin, index}) => {
     return(
             <tr>
                 <td>
+                {/* <Link onClick={addToFavorite(coin.id) | removeFavorite(coin.id)}> */}
+
                 <FontAwesomeIcon icon={faHeart} >
                 { !isLoggedIn &&
                  <RegistryModal /> 
                 }
                 </FontAwesomeIcon>
+
+                {/* <FontAwesomeIcon icon={faHeartCircleCheck} /> */}
+                
+                {/* </Link> */}
                 </td>
                 <td>{index}</td>
                 <td>

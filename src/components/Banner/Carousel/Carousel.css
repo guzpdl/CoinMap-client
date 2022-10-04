@@ -17,7 +17,3 @@ img{
     color: white;
     text-decoration: none;
 }
-
-.carouselItem:hover {
-    color: yellowgreen;
-}

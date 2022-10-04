@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Nav from 'react-bootstrap/Nav';
 import authAxios from '../../services/authAxios.service'
-import "./Login.css"
 
 const LogInModal = () => {
   const [user, setUser] = useState({});
@@ -39,7 +38,7 @@ const LogInModal = () => {
     Log in
   </Nav.Link>
 
-  <Modal className='login' show={show} onHide={handleClose}>
+  <Modal show={show} onHide={handleClose}>
     <Modal.Header closeButton>
       <Modal.Title>Log in</Modal.Title>
     </Modal.Header>
@@ -64,7 +63,7 @@ const LogInModal = () => {
             autoFocus
           />
         </Form.Group>
-      <Button variant="dark" type='submit' onClick={handleClose}>
+      <Button variant="primary" type='submit' onClick={handleClose}>
         Log in
       </Button>
       </Form>

@@ -5,6 +5,7 @@ import TableCoins from "../../components/Market/CoinTable"
 import { Row, Container } from "react-bootstrap";
 import SearchBar from '../../components/searchBar/searchBar';
 import Banner from '../../components/Banner/Banner';
+import GlobalData from '../../components/GlobalData/GlobalData';
 
 
 const HomePage = () => {
@@ -13,6 +14,7 @@ const HomePage = () => {
     const [coinList, setCoinList] = useState([])
     const [search, setSearch] = useState('')
     const [trending, setTrending] = useState([])
+    const [global, setGlobal] = useState([])
 
     
 
@@ -44,6 +46,19 @@ const HomePage = () => {
         getTrending()
     }, [])
 
+    const globalData = () => {
+        coinsAxios
+            .global()
+            .then((global) => {
+                setGlobal(global)
+            })
+            .catch((err) => console.log(err))
+    }
+
+    useEffect(() => {
+        globalData()
+    }, [])
+
 
 
     
@@ -52,7 +67,12 @@ const HomePage = () => {
             <Container>
                 <Row>
                     <Banner trending={trending}/> 
-                    <SearchBar setSearch={setSearch}/>
+                    <div className='container '>
+                        <div className="row justify-content-center">
+                        <GlobalData className="col-6" global={global}/>
+                        <SearchBar className="col-6" setSearch={setSearch}/>
+                        </div>
+                    </div>
                     <TableCoins coinList={coinList} search={search}/>
                 </Row>
             </Container>

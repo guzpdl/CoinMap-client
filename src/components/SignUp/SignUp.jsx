@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Nav from "react-bootstrap/Nav";
 import authAxios from "../../services/authAxios.service";
+import "./SignUp.css"
 
 const RegistryModal = () => {
   const [newUser, setNewUser] = useState({});
@@ -31,7 +32,7 @@ const RegistryModal = () => {
         Sign up
       </Nav.Link>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal className="signup" show={show} onHide={handleClose}>
         <Modal.Header  closeButton>
           <Modal.Title>Sign up to CoinMap</Modal.Title>
         </Modal.Header>
@@ -65,7 +66,7 @@ const RegistryModal = () => {
                 autoFocus
               />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleClose}>
+            <Button variant="dark" type="submit" onClick={handleClose}>
               Register
             </Button>
           </Form>

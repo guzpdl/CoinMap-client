@@ -11,9 +11,6 @@ class CoinsAxios extends InitAxios {
     async trend(body){
         return this.axios.get(`/trending`, body).then((response) => response.data)
     }
-    async global(body){
-        return this.axios.get(`/global`, body).then((response) => response.data)
-    }
 }
 
 export default CoinsAxios

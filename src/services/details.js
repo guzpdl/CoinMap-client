@@ -12,6 +12,10 @@ class DetailsAxios extends InitAxios {
     async coinDataMD(id){
         return this.axios.get(`/${id}`)
     }
+
+    async historicalChart(id){
+        return this.axios.get(`/chart/${id}`)
+    }
 }
 
 export default DetailsAxios

@@ -13,8 +13,10 @@ import userAxiosService from "../../../services/userAxios.service";
 
 const CoinRow = ({coin, index}) => {
 
+
     const {user, isLoggedIn} = useContext(AuthContext)
 
+    console.log(isLoggedIn)
 
     const [favorite, setFavorite] = useState([]);
 
@@ -23,32 +25,30 @@ const CoinRow = ({coin, index}) => {
     // }, [favorite])
 
     
-    const addToFavorite = (id) => {
-         if (!favorite.includes(id))
-         setFavorite(favorite.concat(id))
-    }
+    // const addToFavorite = (id) => {
+    //      if (!favorite.includes(id))
+    //      setFavorite(favorite.concat(id))
+    // }
 
-    const removeFavorite = (id) => {
-        let indexOfFav = favorite.indexOf(id)
-        let updateFav = [...favorite.slice(0, indexOfFav), ...favorite.slice(index + 1)]
-        setFavorite(updateFav)
-    }
+    // const removeFavorite = (id) => {
+    //     let indexOfFav = favorite.indexOf(id)
+    //     let updateFav = [...favorite.slice(0, indexOfFav), ...favorite.slice(index + 1)]
+    //     setFavorite(updateFav)
+    // }
 
 
     return(
             <tr>
                 <td>
-                {/* <Link onClick={addToFavorite(coin.id) | removeFavorite(coin.id)}> */}
 
-                <FontAwesomeIcon icon={faHeart} >
+                <FontAwesomeIcon onClick={() => console.log()} icon={faHeart} >
+                {/* <Link onClick={addToFavorite(coin.id) | removeFavorite(coin.id)}> */}
                 { !isLoggedIn &&
                  <RegistryModal /> 
-                }
-                </FontAwesomeIcon>
-
+                }    
                 {/* <FontAwesomeIcon icon={faHeartCircleCheck} /> */}
+                </FontAwesomeIcon>
                 
-                {/* </Link> */}
                 </td>
                 <td>{index}</td>
                 <td>

@@ -14,7 +14,7 @@ class DetailsAxios extends InitAxios {
     }
 
     async historicalChart(id){
-        return this.axios.get(`/chat/${id}`)
+        return this.axios.get(`/chart/${id}`)
     }
 }
 

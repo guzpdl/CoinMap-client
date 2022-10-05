@@ -43,7 +43,7 @@ const CoinDetails = () => {
                 .historicalChart(id)
                 .then(({data}) => {
                     // console.log('DENTRO DEL SERVICIO CONDATA', data.prices)
-                    setHistoricalData(data.prices)
+                    setHistoricalData(data)
                 })
                 .catch((err) => console.log(err))
         }
@@ -58,10 +58,10 @@ const CoinDetails = () => {
     <>
     <div>
         <div>
-                <div className='coinContainer'>
+                <div>
                 <Details details={details} detailsMD={detailsMD}/>   
                 </div>
-                <Graphics historicalData={historicalData}/>
+                <Graphics detailsMD={detailsMD} historicalData={historicalData}/>
         </div>
     </div>
     </>

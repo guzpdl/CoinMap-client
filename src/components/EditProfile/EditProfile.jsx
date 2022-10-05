@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate, useParams } from 'react-router-dom';
 import userAxios from '../../services/userAxios.service'
+import "./EditProfile.css"
 
 
 
@@ -44,12 +45,12 @@ const EditProfileModal = ({user}) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit your data</Modal.Title>
+          <Modal.Title className="edit">Edit your data</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={updateUser}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label className="edit">Email address</Form.Label>
               <Form.Control
                 name='email'
                 type="email"
@@ -59,7 +60,7 @@ const EditProfileModal = ({user}) => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-              <Form.Label>Username</Form.Label>
+              <Form.Label className="edit">Username</Form.Label>
               <Form.Control
                 name='username'
                 type="text"
@@ -69,7 +70,7 @@ const EditProfileModal = ({user}) => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className="edit">Password</Form.Label>
               <Form.Control
                 name='password'
                 type="password"
@@ -78,7 +79,7 @@ const EditProfileModal = ({user}) => {
                 autoFocus
               />
             </Form.Group>
-          <Button variant="primary" type='submit' onClick={handleClose}>
+          <Button variant="dark" type='submit' onClick={handleClose}>
             Save Changes
           </Button>           
           </Form>

@@ -15,7 +15,7 @@ const CoinDetails = () => {
     const [details, setDetails] = useState(null)
     const [detailsMD, setDetailsMD] = useState({})
     const [historicalData, setHistoricalData] = useState([])
-    const [interval, setInterval] = useState(1)
+    // const [interval, setInterval] = useState(1)
 
     const { id} = useParams()
     // console.log('PARAMS', id)

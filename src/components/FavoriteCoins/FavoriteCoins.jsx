@@ -4,21 +4,17 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 
 
-const FavoriteCoins = ({ userData}) => {
+const FavoriteCoins = ({ userData, user}) => {
 
-  console.log(userData.favorite_coins)  
-
-
+  console.log(userData.favorite_coins) 
 
   const favData = userData.favorite_coins
 
   console.log(favData);
-
-
   
   return(
     
-    favData.map((e, index) =>    {
+    favData?.map((e, index) =>    {
       return(
         <div key={index} className="">
     <Container>
@@ -32,9 +28,9 @@ const FavoriteCoins = ({ userData}) => {
               bulk of the card's content.
             </Card.Text>
           </Card.Body>
-          <ListGroup className="list-group-flush">
             <ListGroup.Item>{e.max_supply}</ListGroup.Item>
-            <ListGroup.Item></ListGroup.Item>
+          <ListGroup className="list-group-flush">
+            <ListGroup.Item>{e.currentPriceUsd}</ListGroup.Item>
             <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
             <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
           </ListGroup>

@@ -30,9 +30,9 @@ const ProfilePage = () => {
 
   const getFavs =  () => {
     UserAxios.getFavCoins(id)
-    .then((data) => {
-      // setuserData(data)
-      const { favorite_coins } = data;
+    .then((user) => {
+      // setuserData(user)
+      const { favorite_coins } = user;
       Promise.all(
         favorite_coins?.map((e) => {
           return (getDetails(e.id));
@@ -40,7 +40,7 @@ const ProfilePage = () => {
         )
         .then((data) => {
           console.log('Entraaaa!!!')
-          setuserData({...userData, favorite_coins:data})
+          setuserData({...user, favorite_coins:data})
           console.log(data)})
           .catch((err) => {
             console.log(err);
@@ -51,8 +51,8 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    getFavs();
-  }, []);
+    isLoading && getFavs();
+  }, [isLoading]);
 
   if (isLoading) {
     return <p>Loading...</p>;

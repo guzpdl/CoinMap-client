@@ -51,6 +51,16 @@ class UserAxios extends InitAxios {
     .then((response) => response.data);
   }
 
+  removeFavCoins(id, body){
+    return this.axios
+    .put(`/profile/favs/remove/${id}`, body, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('tokenAuth')}`,
+      }
+    })
+    .then((response) => response.data);
+  }
+
 
 
   static getInstance() {

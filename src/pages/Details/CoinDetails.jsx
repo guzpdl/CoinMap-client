@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap';
 import Details from '../../components/CoinDetails/Details/Details';
 import "./CoinDetails.css"
 import Graphics from '../../components/CoinDetails/Chart/Chart';
+import Comments from '../../components/CoinDetails/Comments/Comments';
 
 
 const CoinDetails = () => {
@@ -56,14 +57,9 @@ const CoinDetails = () => {
 
   return (
     <>
-    <div>
-        <div>
-                <div>
                 <Details details={details} detailsMD={detailsMD}/>   
-                </div>
                 <Graphics detailsMD={detailsMD} historicalData={historicalData}/>
-        </div>
-    </div>
+                <Comments coinId={id}/>
     </>
   )
 }

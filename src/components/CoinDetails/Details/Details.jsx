@@ -46,7 +46,7 @@ return (
             <h5 className='text-center' >24H:&nbsp; &nbsp;</h5>
             <h5 style={details?.price_change_24h > 0 ?{color: "#8dc647" } 
           : details?.price_change_24h === 0?{color: "gray"}
-          :{color: "#e15241"}}>{ details?.price_change_percentage_24h &&  addDots(details?.price_change_percentage_24h.toFixed(2))}%</h5>
+          :{color: "#e15241"}}>{ details?.price_change_percentage_24h &&  addDots(details?.price_change_percentage_24h?.toFixed(2))}%</h5>
             </div>
             <h5 className='d-flex'>Volumen:&nbsp; &nbsp;${addDots(details?.volumeUsd)}</h5>
           </div> 

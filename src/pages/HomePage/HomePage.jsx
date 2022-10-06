@@ -17,7 +17,6 @@ const HomePage = () => {
 
     
 
-    
     const getAll = () => {
         coinsAxios
             .getCoinList()
@@ -26,10 +25,6 @@ const HomePage = () => {
             })
             .catch((err) => console.log(err))
     }
-
-    useEffect(() => {
-        getAll()
-    }, [])
 
    
     const getTrending = () => {
@@ -42,6 +37,7 @@ const HomePage = () => {
     }
 
     useEffect(() => {
+        getAll()
         getTrending()
     }, [])
 

@@ -23,7 +23,8 @@ const ProfilePage = () => {
       .then(({ data }) => {
         // console.log('DENTRO DEL SERVICIO CONDATA', data)
         // setDetails(data);
-        return data;
+        // console.log(data)
+        return data
       })
       .catch((err) => console.log(err));
   };
@@ -31,20 +32,19 @@ const ProfilePage = () => {
   const getFavs =  () => {
     UserAxios.getFavCoins(id)
     .then((user) => {
-      // setuserData(user)
       const { favorite_coins } = user;
       Promise.all(
         favorite_coins?.map((e) => {
+          // console.log(e)
           return (getDetails(e.id));
         })
         )
         .then((data) => {
           console.log('Entraaaa!!!')
-          setuserData({...user, favorite_coins:data})
-          console.log(data)})
+          setuserData({...user, favorite_coins:data}) 
+        })
           .catch((err) => {
             console.log(err);
-            console.log('error')
           })
       })
     .catch((err) => console.log(err))
@@ -58,6 +58,7 @@ const ProfilePage = () => {
     return <p>Loading...</p>;
   }
 
+  console.log(userData)
   return isLoggedIn ? (
     <Container>
       <Row>
@@ -72,7 +73,7 @@ const ProfilePage = () => {
       </Row>
     </Container>
   ) : (
-    <p>Lo poneis vosotros ;D</p>
+    <p>Inicia Sesion!</p>
   );
 };
 

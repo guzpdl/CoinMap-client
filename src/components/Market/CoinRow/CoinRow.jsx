@@ -8,47 +8,73 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeartCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from "../../../context/auth.context";
 import RegistryModal from "../../SignUp/SignUp";
-import userAxiosService from "../../../services/userAxios.service";
-
+import userAxios from "../../../services/userAxios.service";
 
 const CoinRow = ({coin, index}) => {
 
-
-    const {user, isLoggedIn} = useContext(AuthContext)
-
-    console.log(isLoggedIn)
-
-    const [favorite, setFavorite] = useState([]);
-
-    // useEffect(() => {
-    //     userAxios.
-    // }, [favorite])
+    const {user, isLoggedIn, authentication} = useContext(AuthContext)
 
     
-    // const addToFavorite = (id) => {
-    //      if (!favorite.includes(id))
-    //      setFavorite(favorite.concat(id))
-    // }
 
-    // const removeFavorite = (id) => {
-    //     let indexOfFav = favorite.indexOf(id)
-    //     let updateFav = [...favorite.slice(0, indexOfFav), ...favorite.slice(index + 1)]
-    //     setFavorite(updateFav)
-    // }
+    // console.log(isLoggedIn)
 
+    // useEffect(() => {
+    //     console.log("QUE HAY DENTRO DE LA ID =>",coin.id)
+    // }, [coin])
 
+    const [fav, setFav] = useState(false);
+
+    // NECESITO DOS ARGUMENTOS: el id del user => user del contexto 
+    // LO UNICO QUE NECESITO AHORA ES LA ID DE LA MONEDA QUE ESTÉ LIKEANDO
+    const favsAdd = (id, body) => {
+        userAxios
+            .updateFavCoins(id, body)
+            .then((data) => {
+                authentication()
+                console.log("added", data)
+            })
+            .catch((err) => console.log(err))
+    }
+    
+    const favsDelete = (id, body) => {
+        userAxios
+            .removeFavCoins(id, body)
+            .then((data) => {
+                authentication()
+                console.log("removed",data)
+            })
+            .catch((err) => console.log(err))
+    }
+
+    function handleFav(){
+      setFav(!fav)
+      if(!fav  && user && coin){
+        favsAdd(user._id, {favCoin: coin.id})
+      }else{
+        favsDelete(user._id, {favCoin: coin.id})
+      }
+     
+    }
+
+    // useEffect(() => {
+    //   console.log(user)
+    // }, [user])
+
+    const {favorite_coins} = user
+
+    // console.log(favorite_coins)
+    const mapId = favorite_coins?.map(e => e.id)
+console.log(user)
     return(
             <tr>
                 <td>
+                {
+                    mapId?.includes(coin.id) ?
+                    <FontAwesomeIcon onClick={() => { handleFav() }} icon={faHeartCircleCheck}/>
+                    :
+                    <FontAwesomeIcon onClick={() => { handleFav() }}  icon={faHeart}/>
 
-                <FontAwesomeIcon onClick={() => console.log()} icon={faHeart} >
-                {/* <Link onClick={addToFavorite(coin.id) | removeFavorite(coin.id)}> */}
-                { !isLoggedIn &&
-                 <RegistryModal /> 
-                }    
-                {/* <FontAwesomeIcon icon={faHeartCircleCheck} /> */}
-                </FontAwesomeIcon>
-                
+                }
                 </td>
                 <td>{index}</td>
                 <td>

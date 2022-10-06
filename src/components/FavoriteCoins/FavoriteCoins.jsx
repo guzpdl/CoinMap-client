@@ -6,11 +6,11 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 const FavoriteCoins = ({ userData, user}) => {
 
-  console.log(userData.favorite_coins) 
+  // console.log(userData.favorite_coins) 
+  console.log(userData);
 
   const favData = userData.favorite_coins
 
-  console.log(favData);
   
   return(
     

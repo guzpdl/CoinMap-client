@@ -57,24 +57,24 @@ const ProfilePage = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-
-  console.log(userData)
-  return isLoggedIn ? (
-    <Container>
-      <Row>
-        <h1>{user.username}</h1>
-        <p>e-mail: {user.email}</p>
-        <EditProfileModal user={user} />
-        <div className="panel">
-          <div className="panel-body bio-graph-info">
-            <FavoriteCoins  userData={userData}/>
+  else{
+    return (
+      <Container>
+        <Row>
+          <h1>{user.username}</h1>
+          <p>e-mail: {user.email}</p>
+          <EditProfileModal user={user} />
+          <div className="panel">
+            <div className="panel-body bio-graph-info">
+              {userData &&
+              <FavoriteCoins   userData={userData}/>
+              }
+            </div>
           </div>
-        </div>
-      </Row>
-    </Container>
-  ) : (
-    <p>Inicia Sesion!</p>
-  );
-};
+        </Row>
+      </Container>
+    )
+  };
+  }
 
 export default ProfilePage;

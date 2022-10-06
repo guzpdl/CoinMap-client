@@ -56,15 +56,10 @@ const CoinRow = ({coin, index}) => {
      
     }
 
-    // useEffect(() => {
-    //   console.log(user)
-    // }, [user])
 
     const {favorite_coins} = user
-
-    // console.log(favorite_coins)
     const mapId = favorite_coins?.map(e => e.id)
-console.log(user)
+
     return(
             <tr>
                 <td>

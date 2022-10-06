@@ -29,6 +29,12 @@ const ProfilePage = () => {
       .catch((err) => console.log(err));
   };
 
+  useEffect(() => {
+    console.log("ESTE ES EL USER DATA",userData)
+  }, [userData])
+  
+
+
   const getFavs =  () => {
     UserAxios.getFavCoins(id)
     .then((user) => {
@@ -51,8 +57,8 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    isLoading && getFavs();
-  }, [isLoading]);
+    getFavs();
+  }, []);
 
   if (isLoading) {
     return <p>Loading...</p>;

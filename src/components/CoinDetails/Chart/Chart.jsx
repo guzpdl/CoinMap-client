@@ -32,7 +32,6 @@ const Graphics = ({historicalData, detailsMD}) => {
   const data = historicalData.prices
   
   const graphic = data?.map(value => ({ x:value[0], y: value[1].toFixed(2) }))
-  console.log(graphic)
 
   const options = {
     responsive: true

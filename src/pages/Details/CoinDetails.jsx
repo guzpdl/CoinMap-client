@@ -59,7 +59,7 @@ const CoinDetails = () => {
     <>
                 <Details details={details} detailsMD={detailsMD}/>   
                 <Graphics detailsMD={detailsMD} historicalData={historicalData}/>
-                <Comments coinId={id}/>
+                <Comments coinId={id} detailsMD={detailsMD}/>
     </>
   )
 }

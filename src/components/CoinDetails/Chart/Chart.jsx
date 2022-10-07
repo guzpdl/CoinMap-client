@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +12,9 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment/moment';
+import { chartDays } from '../../../config/data';
+import "./Chart.css"
+import SelectButton from './SelectButton/SelectButton';
 // import faker from 'Faker';
 
 ChartJS.register(
@@ -28,9 +31,9 @@ ChartJS.register(
 
 
 
-const Graphics = ({historicalData, detailsMD}) => {
+const Graphics = ({historicalData, detailsMD, days,setDays}) => {
   const data = historicalData.prices
-  
+  console.log(historicalData)  
   const graphic = data?.map(value => ({ x:value[0], y: value[1].toFixed(2) }))
 
   const options = {
@@ -48,9 +51,18 @@ const Graphics = ({historicalData, detailsMD}) => {
         }
       ]
     }
-  
+  // console.log(days)
   return (
+    <div>
+    <div className="dayButton">
+     {chartDays?.map((day) => 
+      <SelectButton key={day.value} onClick={() => setDays(day.value)} selected={day.value === days}>
+        {day.label}
+      </SelectButton>
+      )}
+    </div>
       <Line options={options} data={info}/>
+    </div>
   )
 }
 

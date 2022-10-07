@@ -16,9 +16,11 @@ const CoinDetails = () => {
     const [details, setDetails] = useState(null)
     const [detailsMD, setDetailsMD] = useState({})
     const [historicalData, setHistoricalData] = useState([])
+    const [days, setDays] = useState(1)
     // const [interval, setInterval] = useState(1)
-
-    const { id} = useParams()
+// console.log(days)
+    const { id } = useParams()
+    console.log(days)
     // console.log('PARAMS', id)
 
         const getDetails = (id) => {
@@ -57,9 +59,17 @@ const CoinDetails = () => {
 
   return (
     <>
-                <Details details={details} detailsMD={detailsMD}/>   
-                <Graphics detailsMD={detailsMD} historicalData={historicalData}/>
+                <Details details={details} detailsMD={detailsMD}/> 
+                <Graphics detailsMD={detailsMD} 
+                days={days} 
+                historicalData={historicalData} 
+                setDays={setDays}
+                />
+                <div >
+                  
                 <Comments coinId={id} detailsMD={detailsMD}/>
+
+                </div>
     </>
   )
 }

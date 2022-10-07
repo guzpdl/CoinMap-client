@@ -13,7 +13,7 @@ class DetailsAxios extends InitAxios {
     return this.axios.get(`/${id}`);
   }
 
-  async historicalChart(id) {
+  async historicalChart(id, days) {
     return this.axios.get(`/chart/${id}`);
   }
 
